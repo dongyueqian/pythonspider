@@ -1,4 +1,5 @@
 import threading
+import time
 
 class Account:
     def __init__(self, balance):
@@ -6,6 +7,7 @@ class Account:
 
 def draw(account, amount):
     if account.balance >= amount:
+        time.sleep(0.1) # 会引发阻塞，进而切换线程
         print(threading.current_thread().name, "取钱成功----1")
         account.balance -= amount
         print(threading.current_thread().name, "余额----2", account.balance)
