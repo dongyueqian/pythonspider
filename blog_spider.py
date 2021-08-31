@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 # 以 f开头表示在字符串内支持大括号内的python表达式
 urls = [
-    f'https://www.cnblogs.com/#p{page}' for page in range(1,51)
+    f'https://www.cnblogs.com/#p{page}' for page in range(50,101)
 ]
 # print(urls)
 
@@ -16,8 +16,9 @@ def crew(url):
     r = requests.get(url)
     # print(url,len(r.text))
     return r.text
-
-# print(crew(urls[0]))
+#
+# for url in urls:
+#     crew(url)
 
 # 解析html
 def parser(html):
@@ -32,5 +33,5 @@ def parser(html):
 
 # parser(urls[0])
 
-# for result in parser(crew(urls[0])):
-#     print(result)
+for result in parser(crew(urls[0])):
+    print(result)
